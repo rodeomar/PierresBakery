@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@model List<PierresBakery.Models.Vendor>
+@{
+    ViewBag.Title = "ID";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h1>Vendors</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Vendor vendor in Model)
+            {
+                <tr>
+                    <td><a href="@Url.Action("Index", "Vendor", new { vendorId = vendor.VendorId })">@vendor.Name</a></td>
+                    <td>@vendor.Description</td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>

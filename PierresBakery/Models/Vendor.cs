@@ -4,13 +4,15 @@
     {
         public string Name { get; set; }
         public string Description { get; set; }
+        public int VendorId { get; set; }
         public List<Order> Orders { get; set; }
 
-        public Vendor(string name, string description)
+        public Vendor(int VendorId, string name, string description)
         {
-            Name = name;
-            Description = description;
-            Orders = new List<Order>();
+            this.VendorId = VendorId;
+            this.Name = name;
+            this.Description = description;
+            this.Orders = new List<Order>();
         }
     }
 }
