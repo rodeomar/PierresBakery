@@ -56,8 +56,8 @@ namespace PierresBakery.Controllers
                 return NotFound();
             }
 
-            int newOrderId = vendor.Orders.Count + 1;
-            Order newOrder = new Order(newOrderId, title, description, price, date);
+            
+            Order newOrder = new Order(title, description, price, date);
             vendor.Orders.Add(newOrder);
 
             return RedirectToAction("Index", "Vendors", new { vendorId = vendor.VendorId });

@@ -8,7 +8,7 @@
 
         public DateTime Date { get; set; }
 
-        public Order(int OrderId, string title, string description, decimal price, DateTime date)
+        public Order(string title, string description, decimal price, DateTime date)
         {
             this.Title = title;
             this.Description = description;

@@ -5,11 +5,12 @@
 
 @model List<PierresBakery.Models.Vendor>
 @{
-    ViewBag.Title = "ID";
+    ViewBag.Title = "Vendors";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container">
     <h1>Vendors</h1>
+    
     <table class="table">
         <thead>
             <tr>
@@ -22,14 +23,13 @@
             {
                 <tr>
                     <td>
-                        <a href="@Url.Action("Index", "Vendors", new { vendorId = vendor.VendorId })">@vendor.Name</a>
+                        <a style="color: rebeccapurple; text-decoration: none" href="@Url.Action("Index", "Vendors", new { vendorId = vendor.VendorId })">@vendor.Name</a>
                     </td>
 
                     <td>@vendor.Description</td>
                 </tr>
             }
-
-
         </tbody>
     </table>
+    <a href="@Url.Action("new", "Vendors")" class="btn btn-primary">Create New Vendor</a>
 </div>
