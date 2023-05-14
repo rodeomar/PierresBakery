@@ -10,7 +10,6 @@
 
         public Order(int OrderId, string title, string description, decimal price, DateTime date)
         {
-            this.OrderId = OrderId;
             this.Title = title;
             this.Description = description;
             this.Price = price;
