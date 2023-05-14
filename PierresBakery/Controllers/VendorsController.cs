@@ -10,12 +10,14 @@ namespace PierresBakery.Controllers
     {
 
         private static List<Vendor> vendors = new();
+
+        [HttpPost]
         public IActionResult Index(int? vendorId)
         {
 
             if (vendorId.HasValue)
             {
-                var vendor = vendors.FirstOrDefault(v => v.VendorId == vendorId);
+                Vendor vendor = vendors.FirstOrDefault(v => v.VendorId == vendorId);
                 if (vendor == null)
                 {
                     return NotFound();
@@ -27,6 +29,28 @@ namespace PierresBakery.Controllers
             return View(vendors);
         }
 
+
+        [HttpGet]
+        public IActionResult Index(string name)
+        {
+            Console.WriteLine("Hel");
+            if (string.IsNullOrWhiteSpace(name))
+            {
+
+                return View(vendors);
+            }
+
+            
+            List<Vendor> matchingVendors = vendors.Where(v => v.Name.Contains(name, StringComparison.OrdinalIgnoreCase)).ToList();
+
+            // If no matching vendors found, return a message to the user
+            if (matchingVendors.Count == 0)
+            {
+                ViewBag.Message = "No vendors found matching the search term.";
+            }
+
+            return View(matchingVendors);
+        }
 
 
         [HttpGet("/vendors/{vendorId}/orders/new")]
