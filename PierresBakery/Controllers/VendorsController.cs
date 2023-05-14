@@ -18,7 +18,7 @@ namespace PierresBakery.Controllers
         public IActionResult Index(int? vendorId)
         {
 
-            vendors[0].addOrder(new Order(1, "Order 1", "This is order 1", 12, new DateTime()));
+            vendors[0].addOrder(new Order("Order 1", "This is order 1", 12, new DateTime()));
             if (vendorId.HasValue)
             {
                 var vendor = vendors.FirstOrDefault(v => v.VendorId == vendorId);
