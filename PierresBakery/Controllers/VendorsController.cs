@@ -9,16 +9,10 @@ namespace PierresBakery.Controllers
 
     {
 
-        private static List<Vendor> vendors = new()
-    {
-        new Vendor(1, "Vendor 1", "This is vendor 1"),
-        new Vendor(2, "Vendor 2", "This is vendor 2"),
-        new Vendor(3, "Vendor 3", "This is vendor 3")
-    };
+        private static List<Vendor> vendors = new();
         public IActionResult Index(int? vendorId)
         {
 
-            vendors[0].addOrder(new Order("Order 1", "This is order 1", 12, new DateTime()));
             if (vendorId.HasValue)
             {
                 var vendor = vendors.FirstOrDefault(v => v.VendorId == vendorId);
