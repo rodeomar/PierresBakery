@@ -35,6 +35,33 @@ namespace PierresBakery.Controllers
 
 
 
+        [HttpGet("/vendors/{vendorId}/orders/new")]
+        public IActionResult Create(int vendorId)
+        {
+            Vendor vendor = vendors.FirstOrDefault(v => v.VendorId == vendorId);
+            if (vendor == null)
+            {
+                return NotFound();
+            }
+
+            return View();
+        }
+
+        [HttpPost("/vendors/{vendorId}/orders/new")]
+        public IActionResult Create(int vendorId, string title, string description, decimal price, DateTime date)
+        {
+            Vendor vendor = vendors.FirstOrDefault(v => v.VendorId == vendorId);
+            if (vendor == null)
+            {
+                return NotFound();
+            }
+
+            int newOrderId = vendor.Orders.Count + 1;
+            Order newOrder = new Order(newOrderId, title, description, price, date);
+            vendor.Orders.Add(newOrder);
+
+            return RedirectToAction("Index", "Vendors", new { vendorId = vendor.VendorId });
+        }
 
 
 
