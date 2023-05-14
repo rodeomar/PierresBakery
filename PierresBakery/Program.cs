@@ -25,12 +25,17 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllerRoute(
         name: "vendor",
         pattern: "vendors/{vendorId}",
-        defaults: new { controller = "Vendor", action = "Index" });
+        defaults: new { controller = "Vendors", action = "Details" });
+
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
 });
+
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}");
 
 app.Run();
 

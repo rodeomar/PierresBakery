@@ -21,7 +21,10 @@
             @foreach (Vendor vendor in Model)
             {
                 <tr>
-                    <td><a href="@Url.Action("Index", "Vendor", new { vendorId = vendor.VendorId })">@vendor.Name</a></td>
+                    <td>
+                        <a href="@Url.Action("Index", "Vendors", new { vendorId = vendor.VendorId })">@vendor.Name</a>
+                    </td>
+
                     <td>@vendor.Description</td>
                 </tr>
             }

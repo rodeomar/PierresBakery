@@ -14,5 +14,11 @@
             this.Description = description;
             this.Orders = new List<Order>();
         }
+
+        public void addOrder(Order order)
+        {
+            Orders.Add(order);
+        }
+
     }
 }

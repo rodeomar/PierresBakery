@@ -1,0 +1,52 @@
+﻿@model PierresBakery.Models.Vendor
+
+@{
+    ViewBag.Title = "Vendor Details";
+}
+
+<h1>Vendor Details</h1>
+
+<div class="card mb-3">
+    <div class="card-header">
+        <h5 class="card-title">@Model.Name</h5>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <td>Description:</td>
+                    <td>@Model.Description</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<h2>Orders</h2>
+
+@if (Model.Orders.Count == 0)
+{
+    <p>No orders found.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model.Orders)
+            {
+                <tr>
+                    <td>@order.Title</td>
+                    <td>@order.Description</td>
+                    <td>@order.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
