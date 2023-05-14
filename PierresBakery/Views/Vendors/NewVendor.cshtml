@@ -1,0 +1,56 @@
+﻿@model PierresBakery.Models.Vendor
+
+@{
+    ViewBag.Title = "New Vendor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="mb-4">Create a New Vendor</h1>
+
+<form id="vendorForm" method="post" class="mx-auto w-50">
+    <div class="form-group mb-4">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="name">
+        <div id="nameError" class="text-danger"></div>
+    </div>
+    <div class="form-group mb-4">
+        <label for="description">Description:</label>
+        <textarea class="form-control" id="description" name="description"></textarea>
+        <div id="descriptionError" class="text-danger"></div>
+    </div>
+    <button type="submit" class="btn btn-primary">Create Vendor</button>
+</form>
+
+
+@section Scripts {
+    <script>
+        // Validate form on submit
+        document.getElementById("vendorForm").addEventListener("submit", function (event) {
+            var nameInput = document.getElementById("name");
+            var descriptionInput = document.getElementById("description");
+            var nameError = document.getElementById("nameError");
+            var descriptionError = document.getElementById("descriptionError");
+            var valid = true;
+
+            if (nameInput.value.trim() === "") {
+                nameError.innerHTML = "Please enter a valid name.";
+                nameInput.focus();
+                event.preventDefault();
+                valid = false;
+            } else {
+                nameError.innerHTML = "";
+            }
+
+            if (descriptionInput.value.trim() === "") {
+                descriptionError.innerHTML = "Please enter a valid description.";
+                descriptionInput.focus();
+                event.preventDefault();
+                valid = false;
+            } else {
+                descriptionError.innerHTML = "";
+            }
+
+            return valid;
+        });
+    </script>
+}

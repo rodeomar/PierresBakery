@@ -47,6 +47,25 @@ namespace PierresBakery.Controllers
             return View();
         }
 
+
+
+
+
+        [HttpGet("/vendors/new")]
+        public IActionResult NewVendor()
+        {
+            return View();
+        }
+
+        [HttpPost("/vendors/new")]
+        public IActionResult NewVendor(string name, string description)
+        {
+            int newVendorId = vendors.Count + 1;
+            Vendor newVendor = new Vendor(newVendorId, name, description);
+            vendors.Add(newVendor);
+            return RedirectToAction("Index");
+        }
+
         [HttpPost("/vendors/{vendorId}/orders/new")]
         public IActionResult Create(int vendorId, string title, string description, decimal price, DateTime date)
         {
