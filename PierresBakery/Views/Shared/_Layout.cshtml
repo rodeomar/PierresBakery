@@ -22,8 +22,8 @@
                             <a class="nav-link" asp-area="" asp-controller="vendors" asp-action="Index">Vendors</a>
                         </li>
                     </ul>
-                    <form class="d-flex" method="get" action="@Url.Action("Index", "Vendors")">
-                        <input class="form-control me-2" type="search" name="name" placeholder="Search Vendor by name" aria-label="Search">
+                    <form id="form" class="d-flex" method="get" action="@Url.Action("Index", "Vendors")">
+                        <input class="form-control me-2" type="search" name="name" placeholder="Search Vendor by name" id="search" aria-label="Search">
                         <button class="btn btn-outline-light" type="submit">Search</button>
                     </form>
 
@@ -45,6 +45,15 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        document.getElementById("form").addEventListener('submit', function (e) {
+            var searchInput = document.querySelector('#search');
+            if (!searchInput.value.trim()) {
+                e.preventDefault();
+
+            }
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
