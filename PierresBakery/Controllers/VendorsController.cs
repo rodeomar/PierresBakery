@@ -43,7 +43,7 @@ namespace PierresBakery.Controllers
             
             List<Vendor> matchingVendors = vendors.Where(v => v.Name.Contains(name, StringComparison.OrdinalIgnoreCase)).ToList();
 
-            // If no matching vendors found, return a message to the user
+  
             if (matchingVendors.Count == 0)
             {
                 ViewBag.Message = "No vendors found matching the search term.";
@@ -81,7 +81,7 @@ namespace PierresBakery.Controllers
             int newVendorId = vendors.Count + 1;
             Vendor newVendor = new Vendor(newVendorId, name, description);
             vendors.Add(newVendor);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "vendors");
         }
 
         [HttpPost("/vendors/{vendorId}/orders/new")]
@@ -97,7 +97,7 @@ namespace PierresBakery.Controllers
             Order newOrder = new Order(title, description, price, date);
             vendor.Orders.Add(newOrder);
 
-            return RedirectToAction("Index", "Vendors", new { vendorId = vendor.VendorId });
+            return RedirectToAction("Index", "vendors", new { vendorId = vendor.VendorId });
         }
 
 
