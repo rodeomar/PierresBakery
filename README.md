@@ -9,13 +9,13 @@ This is an MVC application that allows Pierre to track the vendors that purchase
 ## Setup/Installation Requirements
 - Clone this repository.
 - Navigate to the project directory in your terminal.
-- Run dotnet run to start the application.
+- Run `dotnet run` to start the application.
 - Open a web browser and go to localhost:5000 to view the application.
 
 
 ## Features
-- Create new vendors with a name, description, and a list of orders.
-- Create new orders with a title, description, price, date, and other optional properties.
+- Create new vendors with a name, description.
+- Create new orders with a title, description, price, date.
 - View all vendors.
 - Click on a vendor's name to view all orders for that vendor.
 - Add new orders to a particular vendor.
