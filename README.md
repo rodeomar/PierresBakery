@@ -42,6 +42,12 @@ To use the Vendor and Order Tracker application, follow these steps:
 - Bootstrap
 
 
-## Author
-- Name: Raed Alkhanbasahi
-- Email: raed.alkhanbashi@gmail.com
+## Known Bugs
+
+* _None
+
+## License
+
+Please let me know if you have any questions or concerns raed@alkhanbashi.gmail.com
+
+Copyright (c) 2023 Raed Alkhanbashi.
