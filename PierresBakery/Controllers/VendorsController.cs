@@ -11,12 +11,18 @@ namespace PierresBakery.Controllers
 
         private static List<Vendor> vendors = new();
 
-        [HttpGet]
-        public IActionResult Index(int? vendorId, string? name)
+
+        public static List<Vendor> GetVendors()
         {
-            if (!string.IsNullOrWhiteSpace(name))
+            return vendors;
+        }
+
+        [HttpGet]
+        public IActionResult Index(int? vendorId, string? nameContains)
+        {
+            if (!string.IsNullOrWhiteSpace(nameContains))
             {
-                List<Vendor> matchingVendors = vendors.Where(v => v.Name.Contains(name, StringComparison.OrdinalIgnoreCase)).ToList();
+                List<Vendor> matchingVendors = vendors.Where(v => v.Name.Contains(nameContains, StringComparison.OrdinalIgnoreCase)).ToList();
 
 
                 if (matchingVendors.Count == 0)
@@ -40,25 +46,6 @@ namespace PierresBakery.Controllers
             return View(vendors);
         }
 
-
-
-
-        [HttpGet("/vendors/{vendorId}/orders/new")]
-        public IActionResult Create(int vendorId)
-        {
-            Vendor vendor = vendors.FirstOrDefault(v => v.VendorId == vendorId);
-            if (vendor == null)
-            {
-                return NotFound();
-            }
-
-            return View();
-        }
-
-
-
-
-
         [HttpGet("/vendors/new")]
         public IActionResult NewVendor()
         {
@@ -72,22 +59,6 @@ namespace PierresBakery.Controllers
             Vendor newVendor = new Vendor(newVendorId, name, description);
             vendors.Add(newVendor);
             return RedirectToAction("Index", "vendors");
-        }
-
-        [HttpPost("/vendors/{vendorId}/orders/new")]
-        public IActionResult Create(int vendorId, string title, string description, decimal price, DateTime date)
-        {
-            Vendor vendor = vendors.FirstOrDefault(v => v.VendorId == vendorId);
-            if (vendor == null)
-            {
-                return NotFound();
-            }
-
-
-            Order newOrder = new Order(title, description, price, date);
-            vendor.Orders.Add(newOrder);
-
-            return RedirectToAction("Index", "vendors", new { vendorId = vendor.VendorId });
         }
 
 
